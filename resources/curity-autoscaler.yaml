@@ -1,0 +1,22 @@
+#
+# A custom metric to auto scale Curity Identity Server runtime nodes
+#
+kind: HorizontalPodAutoscaler
+apiVersion: autoscaling/v2beta2
+metadata:
+  name: curity-idsvr-runtime-autoscaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: curity-idsvr-runtime
+  minReplicas: 2
+  maxReplicas: 4
+  metrics:
+    - type: External
+      external:
+        metric:
+          name: idsvr_http_server_request_rate
+        target:
+          type: Value
+          value: 100m

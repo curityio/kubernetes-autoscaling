@@ -1,0 +1,15 @@
+#
+# The service monitor's selector selects identity server runtime nodes
+# https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/user-guides/getting-started.md#related-resources
+#
+kind: ServiceMonitor
+apiVersion: monitoring.coreos.com/v1
+metadata:
+  name: curity-idsvr-runtime
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: idsvr
+      role: curity-idsvr-runtime
+  endpoints:
+    - port: metrics

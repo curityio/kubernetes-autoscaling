@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#####################################################
+# Cleans up all custom resources previously installed
+#####################################################
+
+#
+# Delete the autoscaler
+#
+kubectl delete hpa/curity-idsvr-runtime-autoscaler
+
+#
+# Delete the service monitor
+#
+kubectl delete servicemonitor/curity-idsvr-runtime
+
+#
+# Uninstall the custom metrics API
+#
+cd ../tmp/prometheus-adapter/deploy
+kubectl delete -f manifests/
+kubectl delete namespace custom-metrics
+
+#
+# Uninstall the Prometheus system
+#
+cd ../../kube-prometheus
+kubectl delete -f manifests/
+kubectl delete -f manifests/setup
+
+#
+# Remove the client used in the generate metrics script
+#
+curl -S -s -i -k -u admin:Password1 -X DELETE -o /dev/null \
+https://admin.curity.local/admin/api/restconf/data/base:profiles/base:profile=token-service,oauth-service/base:settings/profile-oauth:authorization-server/profile-oauth:client-store/profile-oauth:config-backed/profile-oauth:client=metrics-test-client
