@@ -1,3 +1,6 @@
+[![Quality](https://img.shields.io/badge/quality-experiment-red)](https://curity.io/resources/code-examples/status/)
+[![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
+
 # Kubernetes Auto Scaling
 
 Helper resources to demonstrate how to auto-scale the Curity Identity Server when running in Kubernetes.\
