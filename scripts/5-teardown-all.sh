@@ -4,10 +4,7 @@
 # Cleans up all custom resources previously installed
 #####################################################
 
-#
-# Delete the autoscaler
-#
-kubectl delete hpa/curity-idsvr-runtime-autoscaler
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 #
 # Delete the service monitor
