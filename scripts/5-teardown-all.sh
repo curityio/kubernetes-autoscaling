@@ -14,7 +14,7 @@ kubectl delete servicemonitor/curity-idsvr-runtime
 #
 # Uninstall the custom metrics API
 #
-cd ../tmp/prometheus-adapter/deploy
+cd ../download/prometheus-adapter/deploy
 kubectl delete -f manifests/
 kubectl delete namespace custom-metrics
 

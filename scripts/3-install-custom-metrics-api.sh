@@ -27,7 +27,7 @@ kubectl create namespace custom-metrics 2>/dev/null
 # Copy in the configmap with custom metrics
 #
 cd prometheus-adapter/deploy
-cp ../resources/custom-metrics-config-map.yaml ./manifests/
+cp ../../../resources/custom-metrics-config-map.yaml ./manifests/
 
 #
 # Create a default version of the cm-adapter-serving-certs secret and the serving certificates
@@ -51,13 +51,6 @@ sed -i '' 's/serving.key/tls.key/g' ./manifests/custom-metrics-apiserver-deploym
 INVALID_URL=prometheus.prom.svc
 VALID_URL=prometheus-k8s.monitoring.svc.cluster.local
 sed -i '' "s/$INVALID_URL/$VALID_URL/g" ./manifests/custom-metrics-apiserver-deployment.yaml
-
-#
-# Also use a recent release for the Docker image
-#
-INVALID_IMAGE='gcr.io\/k8s-staging-prometheus-adapter-amd64'
-VALID_IMAGE='gcr.io\/k8s-staging-prometheus-adapter\/prometheus-adapter:v0.9.0'
-sed -i '' "s/$INVALID_IMAGE/$VALID_IMAGE/g" ./manifests/custom-metrics-apiserver-deployment.yaml
 
 #
 # Then deploy the custom metrics system
