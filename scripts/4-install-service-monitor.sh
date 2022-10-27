@@ -4,6 +4,8 @@
 # Redeploys the Service Monitor to tell Prometheus how to contact Identity Server metrics endpoints
 ###################################################################################################
 
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
 #
 # Copy updated configuration to the adapter folder
 #

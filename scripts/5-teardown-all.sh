@@ -4,10 +4,7 @@
 # Cleans up all custom resources previously installed
 #####################################################
 
-#
-# Delete the autoscaler
-#
-kubectl delete hpa/curity-idsvr-runtime-autoscaler
+cd "$(dirname "${BASH_SOURCE[0]}")"
 
 #
 # Delete the service monitor
@@ -17,7 +14,7 @@ kubectl delete servicemonitor/curity-idsvr-runtime
 #
 # Uninstall the custom metrics API
 #
-cd ../tmp/prometheus-adapter/deploy
+cd ../download/prometheus-adapter/deploy
 kubectl delete -f manifests/
 kubectl delete namespace custom-metrics
 

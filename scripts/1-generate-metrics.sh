@@ -4,6 +4,8 @@
 # Sends a number of requests to the Curity Identity Server to generate some metrics
 ###################################################################################
 
+cd "$(dirname "${BASH_SOURCE[0]}")"
+
 #
 # First create the client if required
 #
