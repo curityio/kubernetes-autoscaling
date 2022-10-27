@@ -126,5 +126,5 @@ data:
             resource: namespace
       name:
         matches: "^(.*)$"
-        as: "idsvr_http_server_request_rate"
+        as: "idsvr_http_server_request_time_rate"
       metricsQuery: '(sum(rate(idsvr_http_server_request_time_sum[5m])) / sum(rate(idsvr_http_server_request_time_count[5m]))) > 0 or on() vector(0)'
